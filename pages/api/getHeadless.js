@@ -9,10 +9,14 @@ export async function getRecipes() {
           description
           id
           title
+          createdAt
+          category
+          instructions
+          ingredients
           photo {
+            url
             height
             width
-            url
           }
           slug
         }

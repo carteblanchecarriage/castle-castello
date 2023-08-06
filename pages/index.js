@@ -23,47 +23,61 @@ export default function Home({ recipes }) {
         <link rel='icon' href='/favicon.ico' />
         <html data-theme='light'></html>
       </Head>
-      <button class='btn'>Button</button>
-      <div className='badge badge-outline'>default</div>
-      <div className='badge badge-primary badge-outline'>primary</div>
-      <div className='badge badge-secondary badge-outline'>secondary</div>
-      <div className='badge badge-accent badge-outline'>accent</div>
+      <div className='w-full flex justify-center'>
+        <div className='m-2 badge badge-default badge-outline hover:cursor-pointer hover:text-white hover:border-0 hover:bg-black'>
+          breakfast
+        </div>
+        <div className='m-2 badge badge-default badge-outline hover:cursor-pointer hover:text-white hover:border-0 hover:bg-black'>
+          lunch
+        </div>
+        <div className='m-2 badge badge-default badge-outline hover:cursor-pointer hover:text-white hover:border-0 hover:bg-black'>
+          dinner
+        </div>
+      </div>
+
       {/* You can open the modal using ID.showModal() method */}
       <button className='btn' onClick={() => window.my_modal_3.showModal()}>
-        open modal
+        Ad Here
       </button>
       <dialog id='my_modal_3' className='modal'>
         <form method='dialog' className='modal-box'>
           <button className='btn btn-sm btn-circle btn-ghost absolute right-2 top-2'>
             ✕
           </button>
-          <h3 className='font-bold text-lg'>Hello!</h3>
-          <p className='py-4'>Press ESC key or click on ✕ button to close</p>
+          <h3 className='font-bold text-lg'>Buy Vito's Salmon Chips!</h3>
+          <p className='py-4'>They're delicious for humans and cats</p>
         </form>
       </dialog>
 
-      <div className='flex flex-col justify-center items-center'>
+      <div className='w-full flex flex-col justify-center items-center'>
         {recipes &&
           recipes.map((recipe) => (
             <>
-              <div className='flex flex-col justify-center items-center mb-8 group hover:scale-105 w-[400px]'>
-                <Link
-                  key={recipe.id}
-                  href={`/recipes/${recipe.slug}`}
-                  className='w-full'
-                >
-                  <Image
-                    src={recipe.photo.url}
-                    width={200}
-                    height={200}
-                    alt='food'
-                    className='h-[200px] w-full object-cover'
-                  />
-                  <h1 className='text-2xl text-center p-2 w-full border border-black'>
-                    {recipe.title}
-                  </h1>
-                </Link>
-              </div>
+              <Link
+                key={recipe.id}
+                href={`/recipes/${recipe.slug}`}
+                className=''
+              >
+                <div className='card w-96 bg-base-100 shadow-xl border-black m-2 hover:border-2'>
+                  <figure>
+                    <Image
+                      src={recipe.photo.url}
+                      width={200}
+                      height={200}
+                      alt='food'
+                      className='h-[200px] w-full object-cover'
+                    />
+                  </figure>
+                  <div className='card-body'>
+                    <h2 className='card-title'>{recipe.title}</h2>
+                    <ul>
+                      {recipe.category.map((category) => (
+                        <li className='badge badge-primary mx-2'>{category}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </Link>
             </>
           ))}
       </div>
