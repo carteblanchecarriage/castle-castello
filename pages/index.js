@@ -23,16 +23,47 @@ export default function Home({ recipes }) {
         <link rel='icon' href='/favicon.ico' />
         <html data-theme='light'></html>
       </Head>
-      <div className='w-full flex justify-center'>
-        <div className='m-2 badge badge-default badge-outline hover:cursor-pointer hover:text-white hover:border-0 hover:bg-black'>
-          breakfast
-        </div>
-        <div className='m-2 badge badge-default badge-outline hover:cursor-pointer hover:text-white hover:border-0 hover:bg-black'>
-          lunch
-        </div>
-        <div className='m-2 badge badge-default badge-outline hover:cursor-pointer hover:text-white hover:border-0 hover:bg-black'>
-          dinner
-        </div>
+      <div className='tabs'>
+        <a className='tab tab-lifted'>Tab 1</a>
+        <a className='tab tab-lifted tab-active'>Tab 2</a>
+        <a className='tab tab-lifted'>Tab 3</a>
+      </div>
+
+      <div className='w-full flex flex-col justify-center items-center'>
+        {recipes &&
+          recipes.map((recipe) => (
+            <>
+              <Link
+                key={recipe.id}
+                href={`/recipes/${recipe.slug}`}
+                className='group'
+              >
+                <div className='card w-96 bg-base-100 shadow-xl m-2'>
+                  <figure>
+                    <Image
+                      src={recipe.photo.url}
+                      width={200}
+                      height={200}
+                      alt='food'
+                      className='h-[200px] w-full object-cover'
+                    />
+                  </figure>
+                  <div className='card-body'>
+                    <h2 className='card-title group-hover:underline'>
+                      {recipe.title}
+                    </h2>
+                    <ul>
+                      {recipe.category.map((category) => (
+                        <li className='badge badge-nuetral bg-gray-50 mx-2'>
+                          {category}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </Link>
+            </>
+          ))}
       </div>
 
       {/* You can open the modal using ID.showModal() method */}
@@ -48,39 +79,6 @@ export default function Home({ recipes }) {
           <p className='py-4'>They're delicious for humans and cats</p>
         </form>
       </dialog>
-
-      <div className='w-full flex flex-col justify-center items-center'>
-        {recipes &&
-          recipes.map((recipe) => (
-            <>
-              <Link
-                key={recipe.id}
-                href={`/recipes/${recipe.slug}`}
-                className=''
-              >
-                <div className='card w-96 bg-base-100 shadow-xl border-black m-2 hover:border-2'>
-                  <figure>
-                    <Image
-                      src={recipe.photo.url}
-                      width={200}
-                      height={200}
-                      alt='food'
-                      className='h-[200px] w-full object-cover'
-                    />
-                  </figure>
-                  <div className='card-body'>
-                    <h2 className='card-title'>{recipe.title}</h2>
-                    <ul>
-                      {recipe.category.map((category) => (
-                        <li className='badge badge-primary mx-2'>{category}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </Link>
-            </>
-          ))}
-      </div>
     </>
   );
 }
