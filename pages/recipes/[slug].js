@@ -28,13 +28,13 @@ export default function Post({ recipe }) {
         </div>
         <div className='text-4xl justify-left w-100 mt-8'>Ingredients</div>
         <ul>
-          {recipe.ingredients.map((ingredient) => (
+          {recipe.ingredients?.map((ingredient) => (
             <li key={ingredient}>{ingredient}</li>
           ))}
         </ul>
         <div className='text-4xl justify-left w-100 mt-8'>Instructions</div>
         <ul>
-          {recipe.instructions.map((instruction, index) => (
+          {recipe.instructions?.map((instruction, index) => (
             <li key={instruction}>{`${index + 1}. ${instruction}`}</li>
           ))}
         </ul>

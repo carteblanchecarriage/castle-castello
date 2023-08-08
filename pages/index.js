@@ -53,7 +53,7 @@ export default function Home({ recipes }) {
                       {recipe.title}
                     </h2>
                     <ul>
-                      {recipe.category.map((category) => (
+                      {recipe.category?.map((category) => (
                         <li
                           key={category}
                           className='badge badge-nuetral bg-gray-50 mx-2'
