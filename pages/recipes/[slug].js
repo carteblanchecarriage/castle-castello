@@ -26,7 +26,7 @@ export default function Post({ recipe }) {
           />
           <p className='mt-4 max-w-xl'>{recipe.description}</p>
         </div>
-        <div className='text-4xl justify-left w-100 mt-8'>Ingredients</div>
+        {/*         <div className='text-4xl justify-left w-100 mt-8'>Ingredients</div>
         <ul>
           {recipe.ingredients?.map((ingredient) => (
             <li key={ingredient}>{ingredient}</li>
@@ -37,7 +37,7 @@ export default function Post({ recipe }) {
           {recipe.instructions?.map((instruction, index) => (
             <li key={instruction}>{`${index + 1}. ${instruction}`}</li>
           ))}
-        </ul>
+        </ul> */}
       </div>
     </>
   );
