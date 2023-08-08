@@ -8,17 +8,13 @@ const Footer = () => {
 
   return (
     <>
-      <div className='p-6 text-center text-red-500 font-bold italic text-4xl'>
-        <Link href='/'>
-          <h1>CASTLE CASTELLO</h1>
-        </Link>
-        <Link href='/'>
-          <h1>CASTLE CASTELLO</h1>
-        </Link>
-        <Link href='/'>
-          <h1>CASTLE CASTELLO</h1>
-        </Link>
-      </div>
+      <footer className='footer footer-center p-10 bg-base-200 text-base-content rounded mt-12'>
+        <div>
+          <p>
+            🏰 <i>Castle Castello</i> 🏰
+          </p>
+        </div>
+      </footer>
     </>
   );
 };

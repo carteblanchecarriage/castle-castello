@@ -10,13 +10,58 @@ import { getRecipes } from './api/getHeadless';
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Home({ recipes }) {
-  console.log('its here', recipes);
+  // we'll work on pagination later, for now put all the data into state
+  const [allRecipes, setAllRecipes] = useState(recipes);
+  const [filteredRecipes, setFilteredRecipes] = useState(recipes);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const categories = [
+    'breakfast',
+    'lunch',
+    'dinner',
+    'winter',
+    'spring',
+    'summer',
+    'fall',
+  ];
+
+  const updateCategory = (e) => {
+    setSelectedCategory(e.target.id);
+    const newR = allRecipes.filter((recipe) =>
+      recipe.category.includes(e.target.id)
+    );
+    console.log(newR);
+    setFilteredRecipes(newR);
+  };
 
   return (
     <>
       <div className='w-full flex flex-col justify-center items-center'>
-        {recipes &&
-          recipes.map((recipe) => (
+        <div className='card-body'>
+          <div>
+            {categories.map((category) => (
+              <input
+                key={category}
+                type='radio'
+                name='radioGroup'
+                id={category}
+                aria-label={category}
+                className='btn hover:border-none'
+                onChange={(e) => updateCategory(e)}
+              />
+            ))}
+            <input
+              type='radio'
+              name='radioGroup'
+              id='clear'
+              aria-label='Clear'
+              className='btn btn-error'
+              onChange={() => setFilteredRecipes(recipes)}
+            />
+          </div>
+        </div>
+
+        {filteredRecipes.length > 0 ? (
+          filteredRecipes.map((recipe) => (
             <div key={recipe.id}>
               <Link href={`/recipes/${recipe.slug}`} className='group'>
                 <div className='card w-96 bg-base-100 shadow-xl m-2'>
@@ -47,11 +92,19 @@ export default function Home({ recipes }) {
                 </div>
               </Link>
             </div>
-          ))}
+          ))
+        ) : (
+          <>
+            <h2>nothing&apos;s in the kithen</h2>
+          </>
+        )}
       </div>
 
       {/* You can open the modal using ID.showModal() method */}
-      <button className='btn' onClick={() => window.my_modal_3.showModal()}>
+      <button
+        className='btn fixed top-0 left-0'
+        onClick={() => window.my_modal_3.showModal()}
+      >
         Ad Here
       </button>
       <dialog id='my_modal_3' className='modal'>
