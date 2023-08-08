@@ -54,7 +54,10 @@ export default function Home({ recipes }) {
                     </h2>
                     <ul>
                       {recipe.category.map((category) => (
-                        <li className='badge badge-nuetral bg-gray-50 mx-2'>
+                        <li
+                          key={category}
+                          className='badge badge-nuetral bg-gray-50 mx-2'
+                        >
                           {category}
                         </li>
                       ))}
@@ -75,8 +78,8 @@ export default function Home({ recipes }) {
           <button className='btn btn-sm btn-circle btn-ghost absolute right-2 top-2'>
             ✕
           </button>
-          <h3 className='font-bold text-lg'>Buy Vito's Salmon Chips!</h3>
-          <p className='py-4'>They're delicious for humans and cats</p>
+          <h3 className='font-bold text-lg'>Buy Vito&apos;s Salmon Chips!</h3>
+          <p className='py-4'>They&apos;re delicious for humans and cats</p>
         </form>
       </dialog>
     </>

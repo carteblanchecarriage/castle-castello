@@ -3,9 +3,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 
-const Navbar = () => {
-  const [copied, setCopied] = useState(false);
-
+const Footer = () => {
   const router = useRouter();
 
   return (
@@ -19,4 +17,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Footer;
