@@ -19,14 +19,14 @@ export default function Post({ recipe }) {
 
           <Image
             src={recipe.photo.url}
-            width={400}
-            height={200}
+            width={recipe.photo.width}
+            height={recipe.photo.height}
             alt='food'
             className='w-1/2'
           />
           <p className='mt-4 max-w-xl'>{recipe.description}</p>
         </div>
-        {/*         <div className='text-4xl justify-left w-100 mt-8'>Ingredients</div>
+        <div className='text-4xl justify-left w-100 mt-8'>Ingredients</div>
         <ul>
           {recipe.ingredients?.map((ingredient) => (
             <li key={ingredient}>{ingredient}</li>
@@ -35,9 +35,9 @@ export default function Post({ recipe }) {
         <div className='text-4xl justify-left w-100 mt-8'>Instructions</div>
         <ul>
           {recipe.instructions?.map((instruction, index) => (
-            <li key={instruction}>{`${index + 1}. ${instruction}`}</li>
+            <li key={index}>{`${index + 1}. ${instruction}`}</li>
           ))}
-        </ul> */}
+        </ul>
       </div>
     </>
   );

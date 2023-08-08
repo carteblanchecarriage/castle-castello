@@ -17,18 +17,14 @@ export default function Home({ recipes }) {
       <div className='w-full flex flex-col justify-center items-center'>
         {recipes &&
           recipes.map((recipe) => (
-            <>
-              <Link
-                key={recipe.id}
-                href={`/recipes/${recipe.slug}`}
-                className='group'
-              >
+            <div key={recipe.id}>
+              <Link href={`/recipes/${recipe.slug}`} className='group'>
                 <div className='card w-96 bg-base-100 shadow-xl m-2'>
                   <figure>
                     <Image
                       src={recipe.photo.url}
-                      width={200}
-                      height={200}
+                      width={recipe.photo.width}
+                      height={recipe.photo.height}
                       alt='food'
                       className='h-[200px] w-full object-cover'
                     />
@@ -38,9 +34,9 @@ export default function Home({ recipes }) {
                       {recipe.title}
                     </h2>
                     <ul>
-                      {recipe.category?.map((category) => (
+                      {recipe.category?.map((category, index) => (
                         <li
-                          key={category}
+                          key={index}
                           className='badge badge-nuetral bg-gray-50 mx-2'
                         >
                           {category}
@@ -50,7 +46,7 @@ export default function Home({ recipes }) {
                   </div>
                 </div>
               </Link>
-            </>
+            </div>
           ))}
       </div>
 
