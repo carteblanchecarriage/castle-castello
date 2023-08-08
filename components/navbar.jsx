@@ -7,16 +7,12 @@ const Navbar = () => {
   const [copied, setCopied] = useState(false);
 
   const router = useRouter();
-  // this feels redundant with the href='/'
-  const handleRefresh = () => {
-    router.reload();
-  };
 
   return (
     <>
       <div className='p-6 text-center text-black font-bold italic text-4xl'>
         <Link href='/'>
-          <h1 onClick={handleRefresh}>CASTLE CASTELLO</h1>
+          <h1>CASTLE CASTELLO</h1>
         </Link>
       </div>
     </>
