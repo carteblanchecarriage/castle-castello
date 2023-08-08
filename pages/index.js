@@ -1,10 +1,8 @@
-import Head from 'next/head';
 import Image from 'next/image';
 import { Inter } from 'next/font/google';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
-import Navbar from '@/components/navbar';
 import Router from 'next/router';
 
 import { getRecipes } from './api/getHeadless';
@@ -16,19 +14,6 @@ export default function Home({ recipes }) {
 
   return (
     <>
-      <Head>
-        <title>Recipes</title>
-        <meta name='description' content='Recipes' />
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
-        <link rel='icon' href='/favicon.ico' />
-        <html data-theme='light'></html>
-      </Head>
-      <div className='tabs'>
-        <a className='tab tab-lifted'>Tab 1</a>
-        <a className='tab tab-lifted tab-active'>Tab 2</a>
-        <a className='tab tab-lifted'>Tab 3</a>
-      </div>
-
       <div className='w-full flex flex-col justify-center items-center'>
         {recipes &&
           recipes.map((recipe) => (

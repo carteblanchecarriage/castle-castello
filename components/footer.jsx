@@ -12,6 +12,12 @@ const Footer = () => {
         <Link href='/'>
           <h1>CASTLE CASTELLO</h1>
         </Link>
+        <Link href='/'>
+          <h1>CASTLE CASTELLO</h1>
+        </Link>
+        <Link href='/'>
+          <h1>CASTLE CASTELLO</h1>
+        </Link>
       </div>
     </>
   );
