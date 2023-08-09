@@ -59,8 +59,8 @@ export default function Home({ recipes }) {
             <button
               className={`btn btn-sm ${
                 selectedCategory.includes(category)
-                  ? 'btn-primary'
-                  : 'btn-outline'
+                  ? 'bg-blue-200 hover:bg-blue-300'
+                  : 'bg-none'
               }`}
               id={category}
               key={category}
@@ -132,7 +132,7 @@ export default function Home({ recipes }) {
 
       {/* You can open the modal using ID.showModal() method */}
       <button
-        className='btn fixed top-0 left-0'
+        className='btn fixed bottom-0 left-0'
         onClick={() => window.my_modal_3.showModal()}
       >
         Ad Here
