@@ -63,6 +63,7 @@ export default function Home({ recipes }) {
                   : 'btn-outline'
               }`}
               id={category}
+              key={category}
               onClick={(e) => updateCategory(e)}
             >
               {category}
