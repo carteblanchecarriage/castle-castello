@@ -13,7 +13,7 @@ export default function Post({ recipe }) {
 
   return (
     <>
-      <div className='w-1/2 mx-auto'>
+      <div className='max-w-lg mx-auto w-5/6'>
         <div className=''>
           <h1 className='text-4xl mb-4'>{recipe.title}</h1>
 
@@ -22,9 +22,9 @@ export default function Post({ recipe }) {
             width={recipe.photo.width}
             height={recipe.photo.height}
             alt='food'
-            className='w-1/2'
+            className='w-full'
           />
-          <p className='mt-4 max-w-xl'>{recipe.description}</p>
+          <p className='mt-4 w-full'>{recipe.description}</p>
         </div>
         <div className='text-4xl justify-left w-100 mt-8 mb-4'>Ingredients</div>
         <ul>
@@ -39,7 +39,9 @@ export default function Post({ recipe }) {
         </div>
         <ul>
           {recipe.instructions?.map((instruction, index) => (
-            <li key={index}>{`${index + 1}. ${instruction}`}</li>
+            <li key={index}>{`${index + 1}. ${
+              instruction.charAt(0).toUpperCase() + instruction.slice(1)
+            }`}</li>
           ))}
         </ul>
       </div>

@@ -13,7 +13,7 @@ export default function Home({ recipes }) {
   // we'll work on pagination later, for now put all the data into state
   const [allRecipes, setAllRecipes] = useState(recipes);
   const [filteredRecipes, setFilteredRecipes] = useState(recipes);
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState([]);
   const categories = [
     'breakfast',
     'lunch',
@@ -24,40 +24,69 @@ export default function Home({ recipes }) {
     'fall',
   ];
 
+  useEffect(() => {
+    if (selectedCategory.length < 1) {
+      setFilteredRecipes(allRecipes);
+    } else {
+      const newR = allRecipes.filter((recipe) =>
+        recipe.category.some((category) => selectedCategory.includes(category))
+      );
+      setFilteredRecipes(newR);
+    }
+  }, [selectedCategory]);
+
   const updateCategory = (e) => {
-    setSelectedCategory(e.target.id);
-    const newR = allRecipes.filter((recipe) =>
-      recipe.category.includes(e.target.id)
-    );
-    console.log(newR);
-    setFilteredRecipes(newR);
+    if (selectedCategory.includes(e.target.id)) {
+      const newSelectedCategory = selectedCategory.filter(
+        (category) => category !== e.target.id
+      );
+      setSelectedCategory(newSelectedCategory);
+    } else {
+      setSelectedCategory([...selectedCategory, e.target.id]);
+    }
+  };
+
+  const clearCategories = () => {
+    setSelectedCategory([]);
+    setFilteredRecipes(allRecipes);
   };
 
   return (
     <>
-      <div className='w-full flex flex-col justify-center items-center'>
-        <div className='card-body'>
-          <div>
-            {categories.map((category) => (
-              <input
-                key={category}
-                type='radio'
-                name='radioGroup'
-                id={category}
-                aria-label={category}
-                className='btn hover:border-none'
-                onChange={(e) => updateCategory(e)}
+      <div className='flex flex-col justify-between items-center align-middle'>
+        <div className='grid grid-cols-3 gap-2 align-middle mb-6'>
+          {categories.map((category) => (
+            <button
+              className={`btn btn-sm ${
+                selectedCategory.includes(category)
+                  ? 'btn-primary'
+                  : 'btn-outline'
+              }`}
+              id={category}
+              onClick={(e) => updateCategory(e)}
+            >
+              {category}
+            </button>
+          ))}
+          <button
+            className='btn btn-circle btn-outline'
+            onClick={clearCategories}
+          >
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              className='h-6 w-6'
+              fill='none'
+              viewBox='0 0 24 24'
+              stroke='currentColor'
+            >
+              <path
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth='2'
+                d='M6 18L18 6M6 6l12 12'
               />
-            ))}
-            <input
-              type='radio'
-              name='radioGroup'
-              id='clear'
-              aria-label='Clear'
-              className='btn btn-error'
-              onChange={() => setFilteredRecipes(recipes)}
-            />
-          </div>
+            </svg>
+          </button>
         </div>
 
         {filteredRecipes.length > 0 ? (
@@ -95,7 +124,7 @@ export default function Home({ recipes }) {
           ))
         ) : (
           <>
-            <h2>nothing&apos;s in the kithen</h2>
+            <h2>nothing&apos;s in the kitchen</h2>
           </>
         )}
       </div>
