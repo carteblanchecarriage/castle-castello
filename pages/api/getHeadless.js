@@ -25,9 +25,5 @@ export async function getRecipes() {
     fetchPolicy: 'no-cache',
   });
 
-  if (!data) {
-    throw new Error('No data found.');
-  }
-
   return data.recipes;
 }

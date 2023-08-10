@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import Link from 'next/link';
 
 import { getRecipes } from '../api/getHeadless';
 
@@ -14,6 +15,9 @@ export default function Post({ recipe }) {
   return (
     <>
       <div className='max-w-lg mx-auto w-5/6'>
+        <Link className='text-xl font-black btn btn-sm mb-4' href='/'>
+          &#x3c;🏰
+        </Link>
         <div className=''>
           <h1 className='text-4xl mb-4'>{recipe.title}</h1>
 
