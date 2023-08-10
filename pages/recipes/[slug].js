@@ -16,10 +16,10 @@ export default function Post({ recipe }) {
     <>
       <div className='max-w-lg mx-auto w-5/6'>
         <Link className='text-xl font-black btn btn-sm mb-4' href='/'>
-          &#x3c;🏰
+          &#x3c;&nbsp;🏰
         </Link>
         <div className=''>
-          <h1 className='text-4xl mb-4'>{recipe.title}</h1>
+          <h1 className='text-4xl mb-4 font-medium'>{recipe.title}</h1>
 
           <Image
             src={recipe.photo.url}
