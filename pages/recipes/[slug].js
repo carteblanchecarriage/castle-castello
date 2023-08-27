@@ -18,15 +18,15 @@ export default function Post({ recipe }) {
         <Link className='text-xl font-black btn btn-sm mb-4' href='/'>
           &#x3c;&nbsp;🏰
         </Link>
-        <div className='flex items-center mt-4'>
-          <h1 className='text-4xl font-bold w-1/2'>{recipe.title}</h1>
+        <div className='md:flex items-center mt-4'>
+          <h1 className='text-4xl font-bold w-full md:w-1/2'>{recipe.title}</h1>
 
           <Image
             src={recipe.photo.url}
             width={recipe.photo.width}
             height={recipe.photo.height}
             alt='food'
-            className='w-1/2 max-w-lg'
+            className='w-full md:w-1/2 max-w-lg order-first md:order-none mt-4 md:mt-0'
           />
         </div>
         <p className='mt-4 w-full'>{recipe?.description}</p>
