@@ -84,7 +84,7 @@ export default function Home({ recipes }) {
           filteredRecipes.map((recipe) => (
             <div key={recipe.id}>
               <Link href={`/recipes/${recipe.slug}`} className='group'>
-                <div className='card w-96 bg-base-100 shadow-xl m-2'>
+                <div className='card rounded-none w-96 bg-base-100 shadow-xl m-2'>
                   <figure>
                     <Image
                       src={recipe.photo.url}
@@ -132,8 +132,11 @@ export default function Home({ recipes }) {
           <button className='btn btn-sm btn-circle btn-ghost absolute right-2 top-2'>
             ✕
           </button>
-          <h3 className='font-bold text-lg'>Buy Vito&apos;s Salmon Chips!</h3>
-          <p className='py-4'>They&apos;re delicious for humans and cats</p>
+          <h3 className='font-bold text-lg'>Buy Calico Cut Pants</h3>
+
+          <a href='https://getcalicocutpants.com/' className='text-blue-500'>
+            Buy Pants here
+          </a>
         </form>
       </dialog>
     </>

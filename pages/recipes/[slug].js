@@ -18,7 +18,7 @@ export default function Post({ recipe }) {
         <Link className='text-xl font-black btn btn-sm mb-4' href='/'>
           &#x3c;&nbsp;🏰
         </Link>
-        <div className='md:flex items-center mt-4'>
+        <div className='md:flex items-center mt-4 max-h-md'>
           <h1 className='text-4xl font-bold w-full md:w-1/2'>{recipe.title}</h1>
 
           <Image
@@ -26,10 +26,12 @@ export default function Post({ recipe }) {
             width={recipe.photo.width}
             height={recipe.photo.height}
             alt='food'
-            className='w-full md:w-1/2 max-w-lg order-first md:order-none mt-4 md:mt-0'
+            className='w-full md:w-1/2 max-h-64 object-cover order-first md:order-none mt-4 md:mt-0'
           />
         </div>
-        <p className='mt-4 w-full'>{recipe?.description}</p>
+        <p className='mt-4 w-full border border-black p-2 shadow-offset-black'>
+          {recipe?.description || null}
+        </p>
         <div className='sm:flex w-full'>
           <div className='w-full md:w-1/3 md:pr-4'>
             <div className='text-2xl font-bold w-full mt-8 mb-4 border-t-4 border-black'>
@@ -75,7 +77,7 @@ export default function Post({ recipe }) {
         {recipe.cookingNotes ? (
           <>
             <div className='text-2xl font-bold justify-left w-100 mt-8 mb-4 border-t-4 border-black'>
-              COOKING NOTES{' '}
+              COOKING NOTES
             </div>
             <div>{recipe.cookingNotes}</div>
           </>
