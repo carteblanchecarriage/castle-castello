@@ -29,9 +29,11 @@ export default function Post({ recipe }) {
             className='w-full md:w-1/2 max-h-64 object-cover order-first md:order-none mt-4 md:mt-0'
           />
         </div>
-        <p className='mt-4 w-full border border-black p-2 shadow-offset-black'>
-          {recipe?.description || null}
-        </p>
+        {recipe?.description ? (
+          <p className='mt-4 w-full border border-black p-2 shadow-offset-black'>
+            {recipe.description}
+          </p>
+        ) : null}
         <div className='sm:flex w-full'>
           <div className='w-full md:w-1/3 md:pr-4'>
             <div className='text-2xl font-bold w-full mt-8 mb-4 border-t-4 border-black'>
