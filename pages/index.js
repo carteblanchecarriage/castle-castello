@@ -60,9 +60,9 @@ export default function Home({ recipes }) {
         <div className='grid grid-cols-3 gap-2 align-middle mb-6'>
           {categories.map((category) => (
             <button
-              className={`btn btn-sm ${
+              className={`border-2 border-black p-2 hover:bg-gray-200 ${
                 selectedCategory.includes(category)
-                  ? 'bg-blue-200 hover:bg-blue-300'
+                  ? 'bg-black text-white hover:bg-gray-800'
                   : 'bg-none'
               }`}
               id={category}
@@ -73,7 +73,7 @@ export default function Home({ recipes }) {
             </button>
           ))}
           <button
-            className='btn btn-sm bg-red-100 hover:bg-red-100'
+            className='border-2 border-black bg-red-100 hover:bg-red-400 hover:text-white'
             onClick={clearCategories}
           >
             Clear
