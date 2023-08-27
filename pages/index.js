@@ -36,7 +36,7 @@ export default function Home({ recipes }) {
       );
       setFilteredRecipes(newR);
     }
-  }, [selectedCategory]);
+  }, [selectedCategory, allRecipes]);
 
   const updateCategory = (e) => {
     if (selectedCategory.includes(e.target.id)) {

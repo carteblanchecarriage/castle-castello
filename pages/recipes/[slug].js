@@ -14,40 +14,72 @@ export default function Post({ recipe }) {
 
   return (
     <>
-      <div className='max-w-lg mx-auto w-5/6'>
+      <div className='max-w-4xl mx-auto w-5/6'>
         <Link className='text-xl font-black btn btn-sm mb-4' href='/'>
           &#x3c;&nbsp;🏰
         </Link>
-        <div className=''>
-          <h1 className='text-4xl mb-4 font-medium'>{recipe.title}</h1>
+        <div className='flex items-center mt-4'>
+          <h1 className='text-4xl font-bold w-1/2'>{recipe.title}</h1>
 
           <Image
             src={recipe.photo.url}
             width={recipe.photo.width}
             height={recipe.photo.height}
             alt='food'
-            className='w-full'
+            className='w-1/2 max-w-lg'
           />
-          <p className='mt-4 w-full'>{recipe.description}</p>
         </div>
-        <div className='text-4xl justify-left w-100 mt-8 mb-4'>Ingredients</div>
-        <ul>
-          {recipe.ingredients?.map((ingredient) => (
-            <li key={ingredient}>
-              <span>🥄</span> {ingredient}
-            </li>
-          ))}
-        </ul>
-        <div className='text-4xl justify-left w-100 mt-8 mb-4'>
-          Instructions
+        <p className='mt-4 w-full'>{recipe?.description}</p>
+        <div className='sm:flex w-full'>
+          <div className='w-full md:w-1/3 md:pr-4'>
+            <div className='text-2xl font-bold w-full mt-8 mb-4 border-t-4 border-black'>
+              INGREDIENTS
+            </div>
+            {
+              <ul>
+                {recipe.ingredients?.mainIngredients.map((ingredient) => (
+                  <li key={ingredient}>
+                    <span>🥄</span> {ingredient}
+                  </li>
+                ))}
+              </ul>
+            }
+            <div className='font-bold mt-4'>
+              {recipe.ingredients?.subIngredientsTitle}
+            </div>
+
+            <ul>
+              {recipe.ingredients?.subIngredients.map((ingredient) => (
+                <li key={ingredient}>
+                  <span>🥄</span> {ingredient}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className='w-full md:w-2/3'>
+            <div className='text-2xl font-bold justify-right w-full mt-8 mb-4 border-t-4 border-black'>
+              DIRECTIONS
+            </div>
+            <ul>
+              {recipe.instructions?.map((instruction, index) => (
+                <li key={index} className='mb-4'>
+                  <div className='font-bold'>Step {index + 1}</div>
+                  {`${
+                    instruction.charAt(0).toUpperCase() + instruction.slice(1)
+                  }`}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-        <ul>
-          {recipe.instructions?.map((instruction, index) => (
-            <li key={index}>{`${index + 1}. ${
-              instruction.charAt(0).toUpperCase() + instruction.slice(1)
-            }`}</li>
-          ))}
-        </ul>
+        {recipe.cookingNotes ? (
+          <>
+            <div className='text-2xl font-bold justify-left w-100 mt-8 mb-4 border-t-4 border-black'>
+              COOKING NOTES{' '}
+            </div>
+            <div>{recipe.cookingNotes}</div>
+          </>
+        ) : null}
       </div>
     </>
   );

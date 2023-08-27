@@ -12,13 +12,18 @@ export async function getRecipes() {
           createdAt
           category
           instructions
-          ingredients
+          ingredients {
+            mainIngredients
+            subIngredients
+            subIngredientsTitle
+          }
           photo {
             url
             height
             width
           }
           slug
+          cookingNotes
         }
       }
     `,
