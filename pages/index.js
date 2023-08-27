@@ -84,7 +84,7 @@ export default function Home({ recipes }) {
           filteredRecipes.map((recipe) => (
             <div key={recipe.id}>
               <Link href={`/recipes/${recipe.slug}`} className='group'>
-                <div className='card rounded-none w-96 bg-base-100 shadow-xl m-2'>
+                <div className='card rounded-none w-96 bg-base-100 shadow-xl m-2 border-2 border-black'>
                   <figure>
                     <Image
                       src={recipe.photo.url}

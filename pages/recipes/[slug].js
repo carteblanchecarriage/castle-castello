@@ -15,7 +15,10 @@ export default function Post({ recipe }) {
   return (
     <>
       <div className='max-w-4xl mx-auto w-5/6'>
-        <Link className='text-xl font-black btn btn-sm mb-4' href='/'>
+        <Link
+          className='text-xl font-black border-2 border-black p-2 hover:shadow-offset-black'
+          href='/'
+        >
           &#x3c;&nbsp;🏰
         </Link>
         <div className='md:flex items-center mt-4 max-h-md'>
@@ -26,17 +29,17 @@ export default function Post({ recipe }) {
             width={recipe.photo.width}
             height={recipe.photo.height}
             alt='food'
-            className='w-full md:w-1/2 max-h-64 object-cover order-first md:order-none mt-4 md:mt-0'
+            className='w-full md:w-1/2 max-h-64 object-cover order-first md:order-none mt-4 md:mt-0 border-2 border-black'
           />
         </div>
         {recipe?.description ? (
-          <p className='mt-4 w-full border border-black p-2 shadow-offset-black'>
+          <p className='mt-4 w-full border-2 border-black p-2 shadow-offset-black'>
             {recipe.description}
           </p>
         ) : null}
         <div className='sm:flex w-full'>
           <div className='w-full md:w-1/3 md:pr-4'>
-            <div className='text-2xl font-bold w-full mt-8 mb-4 border-t-4 border-black'>
+            <div className='text-2xl font-bold w-full mt-8 mb-4 border-t-2 border-black'>
               INGREDIENTS
             </div>
             {
@@ -61,7 +64,7 @@ export default function Post({ recipe }) {
             </ul>
           </div>
           <div className='w-full md:w-2/3'>
-            <div className='text-2xl font-bold justify-right w-full mt-8 mb-4 border-t-4 border-black'>
+            <div className='text-2xl font-bold justify-right w-full mt-8 mb-4 border-t-2 border-black'>
               DIRECTIONS
             </div>
             <ul>
@@ -78,7 +81,7 @@ export default function Post({ recipe }) {
         </div>
         {recipe.cookingNotes ? (
           <>
-            <div className='text-2xl font-bold justify-left w-100 mt-8 mb-4 border-t-4 border-black'>
+            <div className='text-2xl font-bold justify-left w-100 mt-8 mb-4 border-t-2 border-black'>
               COOKING NOTES
             </div>
             <div>{recipe.cookingNotes}</div>
