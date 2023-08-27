@@ -101,7 +101,7 @@ export async function getStaticProps(context) {
 
   const recipe = recipes.find((item) => item.slug === slug);
 
-  return { props: { recipe }, revalidate: 10 };
+  return { props: { recipe }, revalidate: 60 };
 }
 
 export async function getStaticPaths() {
