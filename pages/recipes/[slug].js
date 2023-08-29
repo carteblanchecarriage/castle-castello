@@ -12,6 +12,19 @@ export default function Post({ recipe }) {
 
   console.log(recipe);
 
+  const share = async () => {
+    const shareData = {
+      title: 'recipe',
+      text: 'share with a friend',
+      url: `www.castlecastello/recipe/${slug}`,
+    };
+    try {
+      await navigator.share(shareData);
+    } catch (err) {
+      console.log('gggggggggggggggggggg', err);
+    }
+  };
+
   return (
     <>
       <div className='max-w-4xl mx-auto w-5/6'>
@@ -22,7 +35,24 @@ export default function Post({ recipe }) {
           &#x3c;&nbsp;🏰
         </Link>
         <div className='md:flex items-center mt-4 max-h-md'>
-          <h1 className='text-4xl font-bold w-full md:w-1/2'>{recipe.title}</h1>
+          <div className='w-full md:w-1/2'>
+            <h1 className='text-4xl font-bold w-full md:w-1/2'>
+              {recipe.title}
+            </h1>
+            <ul className='flex mt-2'>
+              {recipe.category?.map((category, index) => (
+                <li key={index} className='badge badge-nuetral bg-gray-50 mx-2'>
+                  {category}
+                </li>
+              ))}
+            </ul>
+            <h4
+              className='mt-2 hover:cursor-pointer bg-blue-500 text-white p-2 inline-block'
+              onClick={share}
+            >
+              share recipe
+            </h4>
+          </div>
 
           <Image
             src={recipe.photo.url}

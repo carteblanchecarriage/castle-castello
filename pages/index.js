@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
 import Router from 'next/router';
+import ConfettiExplosion from 'react-confetti-explosion';
 
 import { getRecipes } from './api/getHeadless';
 
@@ -14,10 +15,12 @@ export default function Home({ recipes }) {
   const [allRecipes, setAllRecipes] = useState(recipes);
   const [filteredRecipes, setFilteredRecipes] = useState(recipes);
   const [selectedCategory, setSelectedCategory] = useState([]);
+  const [isExploding, setIsExploding] = useState(false);
   const categories = [
     'breakfast',
     'lunch',
     'dinner',
+    'dessert',
     'winter',
     'spring',
     'summer',
@@ -54,6 +57,13 @@ export default function Home({ recipes }) {
     setFilteredRecipes(allRecipes);
   };
 
+  const brunching = () => {
+    setIsExploding(true);
+    setTimeout(() => {
+      setIsExploding(false);
+    }, 2000);
+  };
+
   return (
     <>
       <div className='flex flex-col justify-between items-center align-middle'>
@@ -68,10 +78,13 @@ export default function Home({ recipes }) {
               id={category}
               key={category}
               onClick={(e) => updateCategory(e)}
+              onDoubleClick={brunching}
             >
               {category}
             </button>
           ))}
+          {isExploding && <ConfettiExplosion />}
+
           <button
             className='border-2 border-black bg-red-100 hover:bg-red-400 hover:text-white'
             onClick={clearCategories}
@@ -81,38 +94,38 @@ export default function Home({ recipes }) {
         </div>
 
         {filteredRecipes.length > 0 ? (
-          filteredRecipes.map((recipe) => (
-            <div key={recipe.id}>
-              <Link href={`/recipes/${recipe.slug}`} className='group'>
-                <div className='card rounded-none w-96 bg-base-100 shadow-xl m-2 border-2 border-black'>
-                  <figure>
-                    <Image
-                      src={recipe.photo.url}
-                      width={recipe.photo.width}
-                      height={recipe.photo.height}
-                      alt='food'
-                      className='h-[200px] w-full object-cover'
-                    />
-                  </figure>
-                  <div className='card-body'>
-                    <h2 className='card-title group-hover:underline'>
-                      {recipe.title}
-                    </h2>
-                    <ul>
-                      {recipe.category?.map((category, index) => (
-                        <li
-                          key={index}
-                          className='badge badge-nuetral bg-gray-50 mx-2'
-                        >
-                          {category}
-                        </li>
-                      ))}
-                    </ul>
+          <div className='grid grid-cols-3 gap-2 align-middle mb-6'>
+            {filteredRecipes.map((recipe) => (
+              <div key={recipe.id}>
+                <Link href={`/recipes/${recipe.slug}`} className='group'>
+                  <div className='card rounded-none w-96 h-72 bg-base-100 hover:shadow-offset-black m-2 border-2 border-black'>
+                    <figure>
+                      <Image
+                        src={recipe.photo.url}
+                        width={recipe.photo.width}
+                        height={recipe.photo.height}
+                        alt='food'
+                        className='h-[200px] w-full object-cover'
+                      />
+                    </figure>
+                    <div className='card-body'>
+                      <h2 className='card-title'>{recipe.title}</h2>
+                      <ul>
+                        {recipe.category?.map((category, index) => (
+                          <li
+                            key={index}
+                            className='badge badge-nuetral bg-gray-50 mx-2'
+                          >
+                            {category}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            </div>
-          ))
+                </Link>
+              </div>
+            ))}
+          </div>
         ) : (
           <>
             <h2>nothing&apos;s in the kitchen</h2>

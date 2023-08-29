@@ -11,7 +11,7 @@ const Footer = () => {
       <footer className='footer footer-center p-10 bg-base-200 text-base-content rounded mt-12'>
         <div>
           <p>
-            🏰 <i>Castle Castello</i> 🏰
+            🏰 <Link href='/'>Castle Castello</Link> 🏰
           </p>
         </div>
       </footer>
