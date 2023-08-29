@@ -21,7 +21,7 @@ export default function Post({ recipe }) {
     try {
       await navigator.share(shareData);
     } catch (err) {
-      console.log('gggggggggggggggggggg', err);
+      console.log('ggggggggggggggggggg', err);
     }
   };
 
