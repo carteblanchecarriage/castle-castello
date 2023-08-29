@@ -15,8 +15,8 @@ export default function Post({ recipe }) {
   const share = async () => {
     const shareData = {
       title: 'recipe',
-      text: 'share with a friend',
-      url: `www.castlecastello/recipe/${slug}`,
+      text: 'Check out this recipe!',
+      url: `www.castlecastello.com/recipes/${slug}`,
     };
     try {
       await navigator.share(shareData);
