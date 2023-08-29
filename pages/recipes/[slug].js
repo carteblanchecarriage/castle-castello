@@ -10,11 +10,11 @@ export default function Post({ recipe }) {
   const router = useRouter();
   const { slug } = router.query;
 
-  console.log(recipe);
+  console.log('thiiiiis', slug);
 
   const share = async () => {
     const shareData = {
-      url: `www.castlecastello.com/recipes/${slug}`,
+      url: ``,
     };
     try {
       await navigator.share(shareData);
