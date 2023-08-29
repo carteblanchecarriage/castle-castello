@@ -14,8 +14,6 @@ export default function Post({ recipe }) {
 
   const share = async () => {
     const shareData = {
-      title: 'recipe',
-      text: 'Check out this recipe!',
       url: `www.castlecastello.com/recipes/${slug}`,
     };
     try {
