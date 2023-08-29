@@ -101,7 +101,7 @@ export async function getStaticProps(context) {
 
   const recipe = recipes.find((item) => item.slug === slug);
 
-  return { props: { recipe }, revalidate: 60 };
+  return { props: { recipe }, revalidate: 10 };
 }
 
 export async function getStaticPaths() {
@@ -113,7 +113,7 @@ export async function getStaticPaths() {
     }));
     console.log(paths);
 
-    return { paths, fallback: false };
+    return { paths, fallback: 'blocking' };
   } catch (error) {
     console.log('this is an error', error);
     return { paths: [], fallback: false };
