@@ -61,7 +61,7 @@ export default function Home({ recipes }) {
     setIsExploding(true);
     setTimeout(() => {
       setIsExploding(false);
-    }, 2000);
+    }, 8000);
   };
 
   return (
@@ -94,7 +94,7 @@ export default function Home({ recipes }) {
         </div>
 
         {filteredRecipes.length > 0 ? (
-          <div className='grid grid-cols-3 gap-2 align-middle mb-6'>
+          <div className='md:grid md:grid-cols-3 md:gap-2 align-middle mb-6'>
             {filteredRecipes.map((recipe) => (
               <div key={recipe.id}>
                 <Link href={`/recipes/${recipe.slug}`} className='group'>

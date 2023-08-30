@@ -61,9 +61,7 @@ export default function Post({ recipe }) {
           />
         </div>
         {recipe?.description ? (
-          <p className='mt-4 w-full border-2 border-black p-2 shadow-offset-black'>
-            {recipe.description}
-          </p>
+          <p className='mt-4 w-full p-2'>{recipe.description}</p>
         ) : null}
         <div className='sm:flex w-full'>
           <div className='w-full md:w-1/3 md:pr-4'>
@@ -109,10 +107,12 @@ export default function Post({ recipe }) {
         </div>
         {recipe.cookingNotes ? (
           <>
-            <div className='text-2xl font-bold justify-left w-100 mt-8 mb-4 border-t-2 border-black'>
+            <div className='text-2xl font-bold justify-left w-100 mt-8 mb-4 border-t-2 border-black '>
               COOKING NOTES
             </div>
-            <div>{recipe.cookingNotes}</div>
+            <div className='border-2 border-black shadow-offset-black p-2'>
+              {recipe.cookingNotes}
+            </div>
           </>
         ) : null}
       </div>
