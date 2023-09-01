@@ -92,9 +92,22 @@ export default function Home({ recipes }) {
             Clear
           </button>
         </div>
+        <div className='bg-gray-200 p-2 rounded mx-auto flex w-[300px] align-middle'>
+          <Image
+            src={'/icons/magnifying-glass-solid.svg'}
+            width={20}
+            height={20}
+            alt='search'
+            className='mx-2'
+          />
+          <textarea
+            placeholder='search...coming soon'
+            className='bg-transparent h-8 resize-none text-middle'
+          ></textarea>
+        </div>
 
         {filteredRecipes.length > 0 ? (
-          <div className='md:grid md:grid-cols-3 md:gap-2 align-middle mb-6'>
+          <div className='md:grid md:grid-cols-3 md:gap-2 align-middle mb-6 mt-4'>
             {filteredRecipes.map((recipe) => (
               <div key={recipe.id}>
                 <Link href={`/recipes/${recipe.slug}`} className='group'>
